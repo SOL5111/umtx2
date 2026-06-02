@@ -356,6 +356,26 @@ payloads:
         isDefault: true
         releaseDate: 2026-03-29
 
+  # --- Payload Manager: Web-based payload import & autoload dashboard ---
+  # On-console PS5 homebrew (pldmgr.elf) with a browser UI to import payloads
+  # and auto-load them on every boot. Proper semver GitHub releases with .elf
+  # assets (glob pldmgr*.elf matches all naming variants) - fully automated.
+  - id: payload-manager
+    displayTitle: Payload Manager
+    description: Web-based payload manager dashboard - import payloads and auto-load them on every boot through a browser UI
+    authors:
+      - itsPLK
+      - owendswang
+    projectUrl: https://github.com/itsPLK/ps5-payload-manager
+    sourceType: github-release
+    sourceRepo: itsPLK/ps5-payload-manager
+    sourcePattern: pldmgr*.elf
+    toPort: 9021
+    supportedFirmwares: []
+    license:
+      type: "GPL-3.0"
+      url: "https://github.com/itsPLK/ps5-payload-manager/blob/main/LICENSE"
+
   # ===========================================================================
   # Pattern B: direct (Manual URL Management)
   # Use this when:
