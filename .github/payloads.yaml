@@ -409,65 +409,6 @@ payloads:
       type: ""
       url: ""
 
-  # --- kstuff: FPKG enabler (original distribution) ---
-  # EchoStretch/ps4jb-payloads is a multi-payload collection repo with NO releases.
-  # The binary must be linked manually.
-  - id: kstuff
-    displayTitle: ps5-kstuff
-    description: FPKG enabler
-    authors:
-      - sleirsgoevy
-      - john-tornblom
-      - EchoStretch
-      - buzzer-re
-      - idlesauce
-      - BestPig
-      - LightningMods
-      - zecoxao
-    projectUrl: https://github.com/EchoStretch/ps4jb-payloads/
-    sourceType: direct
-    sourceRepo: EchoStretch/ps4jb-payloads
-    sourcePattern: kstuff*.elf
-    toPort: 9021
-    supportedFirmwares: ["3.", "4.", "5."]
-    license:
-      type: ""
-      url: ""
-    manualVersions:
-      - version: "1.5"
-        fileName: kstuff.elf
-        url: https://github.com/EchoStretch/ps4jb-payloads/releases/download/kstuff-ps5/kstuff-ps5.elf
-        isDefault: true
-        releaseDate: 2023-10-01
-
-  # --- kstuff-toggle: Kstuff Toggle (legacy single-elf release 0.2) ---
-  # EchoStretch/kstuff-toggle has releases but assets are ZIP-only.
-  # Cannot use github-release (ZIP extraction is disabled for security).
-  # Starting with 0.3 the ZIP ships THREE variant binaries (-1/-2/-3), so
-  # newer versions live under separate kstuff-toggle-ps5/-ps4/-both entries.
-  # This entry is kept for the original single-binary 0.2 release.
-  - id: kstuff-toggle
-    displayTitle: kstuff-toggle (legacy 0.2)
-    description: Kstuff Toggle Beta - original single-binary release
-    authors:
-      - EchoStretch
-      - john-tornblom
-    projectUrl: https://github.com/EchoStretch/kstuff-toggle
-    sourceType: direct
-    sourceRepo: EchoStretch/kstuff-toggle
-    sourcePattern: kstuff-toggle*.elf
-    toPort: 9021
-    supportedFirmwares: ["3.", "4.", "5."]
-    license:
-      type: ""
-      url: ""
-    manualVersions:
-      - version: "0.2"
-        fileName: kstuff-toggle.elf
-        url: https://github.com/EchoStretch/kstuff-toggle/releases/download/latest/kstuff-toggle.elf
-        isDefault: true
-        releaseDate: 2024-01-10
-
   # --- kstuff-toggle-ps5: PS5 sysentvec only (Payload 1) ---
   # ZIP-only releases; binaries extracted manually. 0.3+ ships three variants
   # (-1 PS5 sysentvec, -2 PS4 sysentvec, -3 both). This entry tracks Payload-1.
