@@ -713,10 +713,40 @@ payloads:
       type: ""
       url: "https://git.earthonion.com/soniciso/elf-arsenal"
     manualVersions:
-      - version: "1.6.4"
+      - version: "1.6.19"
         fileName: elf-arsenal.elf
         url: ""
         isDefault: true
+        releaseDate: 2026-06-11
+      - version: "1.6.18"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-10
+      - version: "1.6.17"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-09
+      - version: "1.6.7"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-06
+      - version: "1.6.6"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-03
+      - version: "1.6.5"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-03
+      - version: "1.6.4"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
         releaseDate: 2026-06-01
       - version: "1.6.3"
         fileName: elf-arsenal.elf
