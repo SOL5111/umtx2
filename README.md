@@ -29,7 +29,7 @@ A web-based PS5 jailbreak host. Open it in your PS5 browser, pick your firmware,
 
 20+ payloads ready to go:
 
-etaHEN, elfldr, ftpsrv, websrv, gdbsrv, klogsrv, shsrv, ps5debug, ps5debug-dizz, byepervisor, backpork, kstuff, kstuff-toggle, libhijacker, ps5-versions, rp-get-pin, ShadowMountPlus, VoidShell, Sonic Loader, Payload Manager, Elf Arsenal, UDS Trophy Unlocker, PS5 DPI v2, and more.
+etaHEN, elfldr, ftpsrv, websrv, gdbsrv, klogsrv, shsrv, ps5debug, ps5debug-dizz, byepervisor, backpork, kstuff, kstuff-toggle, libhijacker, ps5-versions, rp-get-pin, ShadowMountPlus, VoidShell, Sonic Loader, Payload Manager, Elf Arsenal, UDS Trophy Unlocker, PS5 DPI v2, nanoDNS, and more.
 
 ## How to Use
 
@@ -69,6 +69,7 @@ Additional credits to the PS5 homebrew community and all payload developers whos
 - **[ps5-kstuff](https://github.com/EchoStretch/kstuff)** — [sleirsgoevy](https://github.com/sleirsgoevy), [EchoStretch](https://github.com/EchoStretch), [john-tornblom](https://github.com/john-tornblom), [LightningMods](https://github.com/LightningMods), [BestPig](https://github.com/BestPig), [zecoxao](https://github.com/zecoxao), [buzzer-re](https://github.com/buzzer-re)
 - **[kstuff-lite](https://github.com/drakmor/kstuff-lite)** — [drakmor](https://github.com/drakmor) (Performance optimized fork)
 - **[ShadowMountPlus](https://github.com/drakmor/ShadowMountPlus)** — [drakmor](https://github.com/drakmor), [VoidWhisper](https://github.com/VoidWhisper), [BestPig](https://github.com/BestPig), [EchoStretch](https://github.com/EchoStretch), [Gezine](https://github.com/Gezine), [earthonion](https://github.com/earthonion), [LightningMods](https://github.com/LightningMods), [john-tornblom](https://github.com/john-tornblom)
+- **[nanoDNS](https://github.com/drakmor/nanoDNS)** — [drakmor](https://github.com/drakmor) (PS4/PS5 DNS proxy — blocks PSN/update domains, forwards the rest to upstream resolvers)
 - **VoidShell** — [VoidWhisper](https://github.com/VoidWhisper) ([Ko-fi](https://ko-fi.com/voidwhisper))
 - **[Sonic Loader](https://git.earthonion.com/soniciso/sonicloader)** — soniciso, [VoidWhisper](https://github.com/VoidWhisper) (Lapy JB Daemon), [earthonion](https://git.earthonion.com/earthonion) (Web-based PS5 management dashboard)
 - **[Elf Arsenal](https://git.earthonion.com/soniciso/elf-arsenal)** — soniciso (All-in-one PS5 utility dashboard, successor to Sonic Loader)

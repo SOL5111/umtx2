@@ -454,7 +454,14 @@ def match_asset(assets: List[Dict], pattern: str) -> Optional[Dict]:
     # SECURITY: Explicitly block archive formats
     BLOCKED_EXTENSIONS = ('.zip', '.tar', '.gz', '.7z', '.rar', '.tar.gz', '.tgz')
     ALLOWED_EXTENSIONS = ('.elf', '.bin')
-    
+
+    # An exact pattern (no '*') names one specific asset. Match it end-to-end and
+    # FAIL CLOSED: never fall through to the "any .elf" fallback. This keeps a
+    # payload whose release also ships a different-platform asset (e.g. nanoDNS
+    # ships nanodns.elf for PS5 AND nanodns-ps4.elf for PS4) from silently
+    # grabbing the wrong build if the intended asset is renamed/removed upstream.
+    is_exact = '*' not in pattern
+
     # Convert simple glob pattern to regex
     regex_pattern = pattern.replace('.', r'\.').replace('*', '.*')
     regex = re.compile(regex_pattern, re.IGNORECASE)
@@ -462,24 +469,30 @@ def match_asset(assets: List[Dict], pattern: str) -> Optional[Dict]:
     # Priority 1: Pattern match with security filter
     for asset in assets:
         name = asset.get('name', '')
-        
+
         # SECURITY: Skip archive files
         if any(name.lower().endswith(ext) for ext in BLOCKED_EXTENSIONS):
             print(f"    SKIPPED (archive): {name} - Extract manually and use 'direct' sourceType")
             continue
-            
-        if regex.match(name):
+
+        # Exact patterns must match the whole name (end-anchored, so a stray
+        # 'nanodns.elf.ps4.elf' can't sneak through); wildcard patterns keep the
+        # original prefix-match behavior.
+        if (regex.fullmatch(name) if is_exact else regex.match(name)):
             # Additional safety: Only accept known safe extensions
             if any(name.lower().endswith(ext) for ext in ALLOWED_EXTENSIONS):
                 return asset
             else:
                 print(f"    SKIPPED (unsupported format): {name}")
 
-    # Fallback: try to find any .elf or .bin file
-    for asset in assets:
-        name = asset.get('name', '')
-        if name.lower().endswith(ALLOWED_EXTENSIONS):
-            return asset
+    # Fallback: try to find any .elf or .bin file.
+    # Skipped for exact patterns so they fail closed instead of returning the
+    # wrong asset when the named file is absent.
+    if not is_exact:
+        for asset in assets:
+            name = asset.get('name', '')
+            if name.lower().endswith(ALLOWED_EXTENSIONS):
+                return asset
 
     return None
 

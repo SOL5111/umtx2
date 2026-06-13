@@ -376,6 +376,30 @@ payloads:
       type: "GPL-3.0"
       url: "https://github.com/itsPLK/ps5-payload-manager/blob/main/LICENSE"
 
+  # --- nanoDNS: PS4/PS5 DNS proxy server ---
+  # Repo has GitHub Releases with .elf assets - fully automated.
+  # NOTE: releases ship TWO assets: nanodns.elf (PS5) and nanodns-ps4.elf (PS4).
+  # sourcePattern is the EXACT name 'nanodns.elf' (no wildcard). match_asset()
+  # treats wildcard-free patterns as fail-closed: it end-anchors the match and
+  # skips the "any .elf" fallback, so it never silently grabs the PS4 build -
+  # not today (a glob like nanodns*.elf would match nanodns-ps4.elf first since
+  # it is listed first), and not even if the PS5 asset is renamed/removed later
+  # (the version is then simply preserved/skipped instead of mis-downloaded).
+  - id: nanodns
+    displayTitle: nanoDNS
+    description: DNS proxy server - blocks PSN and console update domains via local IPv4 overrides and forwards other queries to upstream resolvers. Listens on port 53.
+    authors:
+      - drakmor
+    projectUrl: https://github.com/drakmor/nanoDNS
+    sourceType: github-release
+    sourceRepo: drakmor/nanoDNS
+    sourcePattern: nanodns.elf
+    toPort: 9021
+    supportedFirmwares: ["3.", "4.", "5."]
+    license:
+      type: "GPL-3.0"
+      url: "https://github.com/drakmor/nanoDNS/blob/main/LICENSE"
+
   # ===========================================================================
   # Pattern B: direct (Manual URL Management)
   # Use this when:
