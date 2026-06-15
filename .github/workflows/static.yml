@@ -49,6 +49,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Regenerate appcache manifest
+        run: |
+          python appcache_manifest_generator.py -d document/en/ps5
+
       - name: Commit changes
         if: success()
         run: |
