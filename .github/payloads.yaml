@@ -374,6 +374,50 @@ payloads:
         isDefault: true
         releaseDate: 2026-03-29
 
+  # --- Payload Manager: Web-based payload import & autoload dashboard ---
+  # On-console PS5 homebrew (pldmgr.elf) with a browser UI to import payloads
+  # and auto-load them on every boot. Proper semver GitHub releases with .elf
+  # assets (glob pldmgr*.elf matches all naming variants) - fully automated.
+  - id: payload-manager
+    displayTitle: Payload Manager
+    description: Web-based payload manager dashboard - import payloads and auto-load them on every boot through a browser UI
+    authors:
+      - itsPLK
+      - owendswang
+    projectUrl: https://github.com/itsPLK/ps5-payload-manager
+    sourceType: github-release
+    sourceRepo: itsPLK/ps5-payload-manager
+    sourcePattern: pldmgr*.elf
+    toPort: 9021
+    supportedFirmwares: []
+    license:
+      type: "GPL-3.0"
+      url: "https://github.com/itsPLK/ps5-payload-manager/blob/main/LICENSE"
+
+  # --- nanoDNS: PS4/PS5 DNS proxy server ---
+  # Repo has GitHub Releases with .elf assets - fully automated.
+  # NOTE: releases ship TWO assets: nanodns.elf (PS5) and nanodns-ps4.elf (PS4).
+  # sourcePattern is the EXACT name 'nanodns.elf' (no wildcard). match_asset()
+  # treats wildcard-free patterns as fail-closed: it end-anchors the match and
+  # skips the "any .elf" fallback, so it never silently grabs the PS4 build -
+  # not today (a glob like nanodns*.elf would match nanodns-ps4.elf first since
+  # it is listed first), and not even if the PS5 asset is renamed/removed later
+  # (the version is then simply preserved/skipped instead of mis-downloaded).
+  - id: nanodns
+    displayTitle: nanoDNS
+    description: DNS proxy server - blocks PSN and console update domains via local IPv4 overrides and forwards other queries to upstream resolvers. Listens on port 53.
+    authors:
+      - drakmor
+    projectUrl: https://github.com/drakmor/nanoDNS
+    sourceType: github-release
+    sourceRepo: drakmor/nanoDNS
+    sourcePattern: nanodns.elf
+    toPort: 9021
+    supportedFirmwares: ["3.", "4.", "5."]
+    license:
+      type: "GPL-3.0"
+      url: "https://github.com/drakmor/nanoDNS/blob/main/LICENSE"
+
   # ===========================================================================
   # Pattern B: direct (Manual URL Management)
   # Use this when:
@@ -406,65 +450,6 @@ payloads:
     license:
       type: ""
       url: ""
-
-  # --- kstuff: FPKG enabler (original distribution) ---
-  # EchoStretch/ps4jb-payloads is a multi-payload collection repo with NO releases.
-  # The binary must be linked manually.
-  - id: kstuff
-    displayTitle: ps5-kstuff
-    description: FPKG enabler
-    authors:
-      - sleirsgoevy
-      - john-tornblom
-      - EchoStretch
-      - buzzer-re
-      - idlesauce
-      - BestPig
-      - LightningMods
-      - zecoxao
-    projectUrl: https://github.com/EchoStretch/ps4jb-payloads/
-    sourceType: direct
-    sourceRepo: EchoStretch/ps4jb-payloads
-    sourcePattern: kstuff*.elf
-    toPort: 9021
-    supportedFirmwares: ["3.", "4.", "5."]
-    license:
-      type: ""
-      url: ""
-    manualVersions:
-      - version: "1.5"
-        fileName: kstuff.elf
-        url: https://github.com/EchoStretch/ps4jb-payloads/releases/download/kstuff-ps5/kstuff-ps5.elf
-        isDefault: true
-        releaseDate: 2023-10-01
-
-  # --- kstuff-toggle: Kstuff Toggle (legacy single-elf release 0.2) ---
-  # EchoStretch/kstuff-toggle has releases but assets are ZIP-only.
-  # Cannot use github-release (ZIP extraction is disabled for security).
-  # Starting with 0.3 the ZIP ships THREE variant binaries (-1/-2/-3), so
-  # newer versions live under separate kstuff-toggle-ps5/-ps4/-both entries.
-  # This entry is kept for the original single-binary 0.2 release.
-  - id: kstuff-toggle
-    displayTitle: kstuff-toggle (legacy 0.2)
-    description: Kstuff Toggle Beta - original single-binary release
-    authors:
-      - EchoStretch
-      - john-tornblom
-    projectUrl: https://github.com/EchoStretch/kstuff-toggle
-    sourceType: direct
-    sourceRepo: EchoStretch/kstuff-toggle
-    sourcePattern: kstuff-toggle*.elf
-    toPort: 9021
-    supportedFirmwares: ["3.", "4.", "5."]
-    license:
-      type: ""
-      url: ""
-    manualVersions:
-      - version: "0.2"
-        fileName: kstuff-toggle.elf
-        url: https://github.com/EchoStretch/kstuff-toggle/releases/download/latest/kstuff-toggle.elf
-        isDefault: true
-        releaseDate: 2024-01-10
 
   # --- kstuff-toggle-ps5: PS5 sysentvec only (Payload 1) ---
   # ZIP-only releases; binaries extracted manually. 0.3+ ships three variants
@@ -723,6 +708,120 @@ payloads:
         url: ""
         isDefault: false
         releaseDate: 2026-05-16
+
+  # --- Elf Arsenal: All-in-one PS5 utility dashboard (Sonic Loader successor) ---
+  # Hosted on the same Gitea (git.earthonion.com) as Sonic Loader, behind the
+  # Anubis anti-bot gate, so the auto-update workflow cannot fetch it.
+  # Update manually: drop new elf-arsenal.elf under payloads/elf-arsenal/{version}/
+  # and add a manualVersions entry. Leave url empty (Gitea web path is gated).
+  - id: elf-arsenal
+    displayTitle: Elf Arsenal
+    description: All-in-one PS5 utility dashboard and successor to Sonic Loader - launch games, manage cheats, install homebrew and PKGs, file transfer, fan control, trophy and save tools, all from a browser WebUI.
+    authors:
+      - soniciso
+      - voidwhisper
+      - earthonion
+    projectUrl: https://git.earthonion.com/soniciso/elf-arsenal
+    sourceType: direct
+    sourceRepo: ""
+    sourcePattern: elf-arsenal*.elf
+    toPort: 9021
+    supportedFirmwares: []
+    license:
+      type: ""
+      url: "https://git.earthonion.com/soniciso/elf-arsenal"
+    manualVersions:
+      - version: "1.6.19"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: true
+        releaseDate: 2026-06-11
+      - version: "1.6.18"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-10
+      - version: "1.6.17"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-09
+      - version: "1.6.7"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-06
+      - version: "1.6.6"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-03
+      - version: "1.6.5"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-03
+      - version: "1.6.4"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-06-01
+      - version: "1.6.3"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-05-31
+      - version: "1.6.2"
+        fileName: elf-arsenal.elf
+        url: ""
+        isDefault: false
+        releaseDate: 2026-05-27
+
+  # --- UDS Trophy Unlocker: all-firmware PS5 trophy unlocker (single ELF) ---
+  # Gitea-hosted (Anubis-gated) - manual updates only.
+  - id: uds-trophy-unlocker
+    displayTitle: UDS Trophy Unlocker
+    description: All-firmware (4.03-12.70) PS5 trophy unlocker - a single ELF that auto-patches SceShellCore for the active firmware and unlocks trophies from inside running games via the Universal Data System.
+    authors:
+      - soniciso
+    projectUrl: https://git.earthonion.com/soniciso/uds-trophy-unlocker
+    sourceType: direct
+    sourceRepo: ""
+    sourcePattern: trophy_unlocker*.elf
+    toPort: 9021
+    supportedFirmwares: []
+    license:
+      type: ""
+      url: "https://git.earthonion.com/soniciso/uds-trophy-unlocker"
+    manualVersions:
+      - version: "1.0.0"
+        fileName: trophy_unlocker_allfw.elf
+        url: ""
+        isDefault: true
+        releaseDate: 2026-05-26
+
+  # --- PS5 DPI v2: etaHEN-compatible HTTP package installer ---
+  # Gitea-hosted (Anubis-gated) - manual updates only.
+  - id: ps5-dpi-v2
+    displayTitle: PS5 DPI v2
+    description: etaHEN-compatible HTTP package installer - serves a web form on port 12800 to install PKG files by URL. Works on FW 4.03 through 13.20+.
+    authors:
+      - soniciso
+    projectUrl: https://git.earthonion.com/soniciso/ps5-dpi-v2
+    sourceType: direct
+    sourceRepo: ""
+    sourcePattern: dpiv2*.elf
+    toPort: 9021
+    supportedFirmwares: []
+    license:
+      type: ""
+      url: "https://git.earthonion.com/soniciso/ps5-dpi-v2"
+    manualVersions:
+      - version: "1.0.0"
+        fileName: dpiv2.elf
+        url: ""
+        isDefault: true
+        releaseDate: 2026-05-31
 
   # ===========================================================================
   # Pattern C: custom (JavaScript Actions - No Binary Download)
