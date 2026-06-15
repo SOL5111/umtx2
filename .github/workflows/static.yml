@@ -93,6 +93,32 @@ jobs:
         run: |
           python appcache_manifest_generator.py -d document/en/ps5
 
+      - name: Update bizkut.github.io root site
+        env:
+          GH_TOKEN: ${{ secrets.BIZKUT_GITHUB_IO_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "Missing required secret: BIZKUT_GITHUB_IO_TOKEN"
+            exit 1
+          fi
+
+          gh auth setup-git
+          gh repo clone bizkut/bizkut.github.io github-io-site -- --branch master --depth 1
+          rsync -a --delete --exclude '.git' document/en/ps5/ github-io-site/
+          touch github-io-site/.nojekyll
+
+          cd github-io-site
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if ! git diff --quiet || [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore: update root Pages site from bizkut/umtx2"
+            git push origin master
+          else
+            echo "bizkut.github.io root site is already up to date"
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
