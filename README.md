@@ -29,7 +29,7 @@ A web-based PS5 jailbreak host. Open it in your PS5 browser, pick your firmware,
 
 20+ payloads ready to go:
 
-etaHEN, elfldr, ftpsrv, websrv, gdbsrv, klogsrv, shsrv, ps5debug, ps5debug-dizz, byepervisor, backpork, kstuff, kstuff-toggle, libhijacker, ps5-versions, rp-get-pin, ShadowMountPlus, VoidShell, Sonic Loader, Payload Manager, Elf Arsenal, UDS Trophy Unlocker, PS5 DPI v2, nanoDNS, and more.
+PS5 Linux Loader, UMTX2 Host Installer, etaHEN, elfldr, ftpsrv, websrv, gdbsrv, klogsrv, shsrv, ps5debug, ps5debug-dizz, byepervisor, backpork, kstuff, kstuff-toggle, libhijacker, ps5-versions, rp-get-pin, ShadowMountPlus, VoidShell, Sonic Loader, Payload Manager, Elf Arsenal, UDS Trophy Unlocker, PS5 DPI v2, nanoDNS, and more.
 
 ## How to Use
 
