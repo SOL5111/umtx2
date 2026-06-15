@@ -49,7 +49,19 @@ etaHEN, elfldr, ftpsrv, websrv, gdbsrv, klogsrv, shsrv, ps5debug, ps5debug-dizz,
 
 ## Hosting
 
-Live at: [https://bizkut.github.io/umtx2/](https://bizkut.github.io/umtx2/)
+Live hosts:
+
+- Root site: [https://bizkut.github.io/](https://bizkut.github.io/)
+- Project site: [https://bizkut.github.io/umtx2/](https://bizkut.github.io/umtx2/)
+
+GitHub Actions keeps the hosted copy updated:
+
+- `.github/workflows/static.yml` runs on every push to `main`, manual dispatch, and twice daily at 06:00/18:00 UTC.
+- The workflow runs `.github/scripts/update_payloads.py` to refresh payload metadata and binaries from upstream releases.
+- The workflow builds `document/en/ps5/cache.appcache` and deploys `document/en/ps5` to GitHub Pages.
+- This repo also mirrors the same generated `document/en/ps5` bundle to the root Pages repo, `bizkut/bizkut.github.io`, using the repository secret `BIZKUT_GITHUB_IO_TOKEN`.
+
+Fork note: GitHub Actions secrets are not copied to forks. If you fork this repo, the normal Pages artifact deploy can still work for your fork, but the root-site mirror to `bizkut.github.io` will not work unless you configure your own token and target repository in the workflow.
 
 ### Self-hosted
 
