@@ -35,9 +35,9 @@ payloads:
     description: Linux boot payload for PS5
     authors:
       - ps5-linux
-    projectUrl: https://github.com/ps5-linux/ps5-linux-loader
+    projectUrl: https://github.com/bizkut/ps5-linux-loader
     sourceType: github-release
-    sourceRepo: ps5-linux/ps5-linux-loader
+    sourceRepo: bizkut/ps5-linux-loader
     sourcePattern: ps5-linux-loader*.elf
     toPort: 9021
     supportedFirmwares: ["3.00", "3.10", "3.20", "3.21", "4.00", "4.02", "4.03", "4.50", "4.51", "5.00", "5.02", "5.10", "5.50", "6.00", "6.02"]
