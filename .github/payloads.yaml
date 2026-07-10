@@ -390,6 +390,31 @@ payloads:
         isDefault: true
         releaseDate: 2026-03-29
 
+  # --- kstuff-lite (EchoStretch fork): FPKG enabler with trophy/PFS/VR2 support ---
+  # EchoStretch fork of kstuff-lite with additional features
+  - id: kstuff-lite-echostretch
+    displayTitle: kstuff-lite (EchoStretch fork)
+    description: FPKG enabler - EchoStretch fork with trophy support, PFS compression, VR2 bypass and syscall hooking optimizations
+    authors:
+      - EchoStretch
+      - sleirsgoevy
+      - drakmor
+      - zecoxao
+      - flatz
+      - idlesauce
+      - buzzer-re
+      - Al-Azif
+      - john-tornblom
+    projectUrl: https://github.com/EchoStretch/kstuff-lite
+    sourceType: github-release
+    sourceRepo: EchoStretch/kstuff-lite
+    sourcePattern: kstuff*.elf
+    toPort: 9021
+    supportedFirmwares: ["3.", "4.", "5."]
+    license:
+      type: ""
+      url: ""
+
   # --- Payload Manager: Web-based payload import & autoload dashboard ---
   # On-console PS5 homebrew (pldmgr.elf) with a browser UI to import payloads
   # and auto-load them on every boot. Proper semver GitHub releases with .elf
