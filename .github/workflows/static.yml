@@ -107,7 +107,7 @@ jobs:
           fi
 
           gh auth setup-git
-          gh repo clone bizkut/bizkut.github.io github-io-site -- --branch master --depth 1
+          gh repo clone SOL5111/sol5111.github.io github-io-site -- --branch master --depth 1
           rsync -a --delete --exclude '.git' document/en/ps5/ github-io-site/
           touch github-io-site/.nojekyll
 
@@ -120,7 +120,7 @@ jobs:
             git commit -m "chore: update root Pages site from bizkut/umtx2"
             git push origin master
           else
-            echo "bizkut.github.io root site is already up to date"
+            echo "sol5111.github.io root site is already up to date"
           fi
 
       - name: Upload artifact
